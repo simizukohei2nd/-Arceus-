@@ -726,6 +726,7 @@ if (NormalBalls.includes(Ball) && Ball2 !== "不問") {
 }else if (aware.includes(Ai) && Ball2 === "不覚") {
   error("ありえないボール条件とAI補正の組み合わせです");
   return;
+}
 
 result =(1-(1-(((1-(1-num13/255)**(0.5))*65535+1)/65536))**2)*100
 
@@ -736,4 +737,5 @@ document.getElementById("result").textContent = `捕獲率[%]：${result.toFixed
 
 </body>
 </html>
+
 
