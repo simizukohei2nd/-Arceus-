@@ -1,13 +1,98 @@
-<!DOCTYPE html>
-<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
   <title>ポケモンレジェンズアルセウス 捕獲率計算機</title>
+<style>
+
+body{
+    background:#f5f7fb;
+    font-family:"Yu Gothic",sans-serif;
+    padding:20px;
+}
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
+}
+h1{
+    text-align:center;
+    color:#2a75bb;
+    margin-bottom:30px;
+}
+.form-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:12px;
+}
+.form-row label{
+  width:170px;
+  text-align:right;
+  line-height:1.2;
+}
+.sub-label{
+  font-size:11px;
+  color:#666;
+}
+.form-row input,
+.form-row select{
+  width:180px;
+}
+.button-area{
+  text-align:center;
+  margin-top:24px;
+}
+button{
+  background:#4f7cff;
+  color:white;
+  border:none;
+  border-radius:999px;
+  padding:12px 40px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+button:hover{
+  background:#3a68e0;
+  transform:translateY(-1px);
+}
+#result{
+    margin-top:20px;
+    background:#fff6cf;
+    border-radius:10px;
+    padding:20px;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+}
+.note{
+    margin-top:20px;
+    color:#666;
+    font-size:14px;
+    line-height:1.7;
+}
+@media(max-width:700px){
+    .form-row{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
 </head>
 <body>
 
-<div>・ポケモン名　　　　：<input list="A-list" id="A">
+<div class="container">
+<h1>ポケモンレジェンズアルセウス<br>
+捕獲率計算機</h1>
+<div class="form-row">
+    <label for="A">ポケモン名</label>
+    <input list="A-list" id="A">
+</div>
 <datalist id="A-list">
 <option value="ピカチュウ">
 <option value="ライチュウ">
@@ -250,29 +335,40 @@
 <option value="オオニューラ">
 <option value="ハリーマン">
 <option value="ラブトロス">
- </datalist>
-</div>
-<div>・ボール名　　　　　：<select id="B">
-  <option value="モンスターボール">モンスターボール</option>
-  <option value="スーパーボール">スーパーボール</option>
-  <option value="ハイパーボール">ハイパーボール</option>
-  <option value="フェザーボール">フェザーボール</option>
-  <option value="ウィングボール">ウィングボール</option>
-  <option value="ジェットボール">ジェットボール</option>
-  <option value="ヘビーボール">ヘビーボール</option>
-  <option value="メガトンボール">メガトンボール</option>
-  <option value="ギガトンボール">ギガトンボール</option>
+</datalist>
+
+<div class="form-row">
+    <label for="B">ボール名</label>
+    <select id="B">
+    <option value="モンスターボール">モンスターボール</option>
+    <option value="スーパーボール">スーパーボール</option>
+    <option value="ハイパーボール">ハイパーボール</option>
+    <option value="フェザーボール">フェザーボール</option>
+    <option value="ウィングボール">ウィングボール</option>
+    <option value="ジェットボール">ジェットボール</option>
+    <option value="ヘビーボール">ヘビーボール</option>
+    <option value="メガトンボール">メガトンボール</option>
+    <option value="ギガトンボール">ギガトンボール</option>
  </select>
 </div>
-<div>・ボール条件　　　　：<select id="B2">
-  <option value="不問">特になし</option>
-  <option value="飛行">高く飛んでいる</option>
-  <option value="不覚">主人公に気付いていない</option>
+
+<div class="form-row">
+    <label for="B">ボール条件</label>
+    <select id="B2">
+    <option value="不問">特になし</option>
+    <option value="飛行">高く飛んでいる</option>
+    <option value="不覚">主人公に気付いていない</option>
  </select>
 </div>
-<div>・残りHP割合［%］　 ：<input id="C" type="number" min="1" max="100" value="100">
+
+<div class="form-row">
+    <label for="C">残りHP割合 [%]</label>
+    <input id="C" type="number" min="1" max="100" value="100">
 </div>
-<div>・団員ランク　　　　：<select id="D">
+
+<div class="form-row">
+    <label for="D">団員ランク</label>
+    <select id="D">
     <option value="10">10</option>
     <option value="9">9</option>
     <option value="8">8</option>
@@ -286,34 +382,55 @@
     <option value="0">0</option>
  </select>
 </div>
-<div>・相手のLv　　　　　：<input id="E" type="number" min="1" max="100" value="50">
+
+<div class="form-row">
+    <label for="E">相手のLv</label>
+    <input id="E" type="number" min="1" max="100" value="50">
 </div>
-<div>・状態異常　　　　　：<select id="F">
+
+<div class="form-row">
+    <label for="F">状態異常</label>
+    <select id="F">
     <option value="いいえ">いいえ</option>
     <option value="はい">はい</option>
  </select>
 </div>
-<div>・大量発生　　　　　：<select id="G">
+
+<div class="form-row">
+    <label for="G">大量発生</label>
+    <select id="G">
     <option value="いいえ">いいえ</option>
     <option value="はい">はい</option>
  </select>
 </div>
-<div>・オヤブン　　　　　：<select id="H">
+
+<div class="form-row">
+    <label for="H">オヤブン</label>
+    <select id="H">
     <option value="いいえ">いいえ</option>
     <option value="はい">はい</option>
  </select>
 </div>
-<div>・背面取り　　　　　：<select id="J">
+
+<div class="form-row">
+    <label for="J">背面取り</label>
+    <select id="J">
     <option value="いいえ">いいえ</option>
     <option value="はい">はい</option>
  </select>
 </div>
-<div>・ズリのみ　　　　　：<select id="K">
+
+<div class="form-row">
+    <label for="K">ズリの実</label>
+    <select id="K">
     <option value="いいえ">いいえ</option>
     <option value="はい">はい</option>
  </select>
 </div>
-<div>・AI補正　　　　　　：<select id="I">
+
+<div class="form-row">
+    <label for="I">AI補正</label>
+    <select id="I">
     <option value="隠密">見つかっていない</option>
     <option value="攻撃">「!」のサイン(攻撃的なポケモン)</option>
     <option value="臆病">「!」のサイン(臆病なポケモン)</option>
@@ -326,8 +443,12 @@
     <option value="疲労">疲れている(ねばりだま等)</option>
  </select>
 </div>
+
+<div class="button-area">
 <button onclick="calc()">計算</button>
+</div>
 <div id="result"></div>
+</div>
 
 <script>
 function toHalfWidth(str) {
@@ -716,16 +837,16 @@ const BlackBalls = ["ヘビーボール", "メガトンボール", "ギガトン
 const aware = ["攻撃", "臆病", "警戒", "逃走"];
 
 if (NormalBalls.includes(Ball) && Ball2 !== "不問") {
-  error("このボールでは特になしを入力してください");
+  error("このボールでは「ボール条件：特になし」を入力してください");
   return;
 }else if (SkyBalls.includes(Ball) && Ball2 === "不覚") {
-  error("このボールでは主人公に気づいていないを入力しないでください");
+  error("「ボール条件：主人公に気づいていない」は黒色玉石ボール専用の条件です");
   return;
 }else if (BlackBalls.includes(Ball) && Ball2 === "飛行") {
-  error("このボールでは高く飛んでいるを入力しないで下さい");
+  error("「ボール条件：高く飛んでいる」は空色玉石ボール専用の条件です");
   return;
 }else if (aware.includes(Ai) && Ball2 === "不覚") {
-  error("ありえないボール条件とAI補正の組み合わせです");
+  error("ボール条件とAI補正があり得ない組み合わせです");
   return;
 }
 
@@ -735,10 +856,6 @@ document.getElementById("result").textContent = `捕獲率[%]：${result.toFixed
 };
 
 </script>
-
+</div>
 </body>
 </html>
-
-
-
-
